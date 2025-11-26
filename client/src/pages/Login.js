@@ -3,6 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Auth.css';
 
+// ----------------------------------------------------
+// FIX: Define the correct Render backend URL here
+// ----------------------------------------------------
+const API_BASE_URL = 'https://jvm-autohub-1.onrender.com';
+// ----------------------------------------------------
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -25,7 +31,8 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      // FIX: Use the constant API_BASE_URL
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, formData); 
       localStorage.setItem('userInfo', JSON.stringify(response.data));
       navigate('/');
     } catch (error) {
