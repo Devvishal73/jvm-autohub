@@ -7,9 +7,10 @@ require('dotenv').config();
 
 const app = express();
 
+// Change the origin to allow your live Vercel frontend URL
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
+  origin: 'https://jvm-autohub.vercel.app', // <-- FIX: Use your Vercel URL
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
